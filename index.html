@@ -1,349 +1,397 @@
 <html><head><base href="https://letawarlen.com/" />
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leta Warlen - Artista Vibrante</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Righteous&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-  :root {
-    --color-1: #FF6B6B;
-    --color-2: #4ECDC4;
-    --color-3: #45B7D1;
-    --color-4: #FFBE0B;
-    --color-5: #FB5607;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leta Warlen - Artista Vibrante</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Righteous&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --color-1: #FF6B6B;
+      --color-2: #4ECDC4;
+      --color-3: #45B7D1;
+      --color-4: #FFBE0B;
+      --color-5: #FB5607;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    header {
+      background-color: var(--color-1);
+      padding: 2rem;
+      text-align: center;
+    }
+    
+    h1 {
+      font-family: 'Righteous', cursive;
+      font-size: 4rem;
+      color: #fff;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      justify-content: center;
+    }
+    
+    nav ul li {
+      margin: 0 1rem;
+    }
+    
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+    }
+    
+    nav ul li a:hover {
+      background-color: var(--color-4);
+      color: #333;
+    }
+    
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+    
+    h2 {
+      font-family: 'Righteous', cursive;
+      font-size: 2.5rem;
+      color: var(--color-5);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .artwork {
+      background-color: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+    
+    .artwork:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .artwork-cover {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: opacity 0.3s ease;
+    }
+    
+    .artwork:hover .artwork-cover {
+      opacity: 0;
+    }
+    
+    .artwork-slideshow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 250px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .artwork:hover .artwork-slideshow {
+      opacity: 1;
+    }
+    
+    .artwork-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      object-fit: cover;
+    }
+    
+    .artwork-slide.active {
+      opacity: 1;
+    }
+    
+    .artwork-info {
+      padding: 1.5rem;
+    }
+    
+    .artwork-info h3 {
+      font-family: 'Righteous', cursive;
+      margin-bottom: 0.5rem;
+      color: var(--color-3);
+    }
+    
+    .support {
+      background-color: var(--color-2);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-radius: 15px;
+      margin-top: 3rem;
+    }
+    
+    .support h2 {
+      color: #fff;
+    }
+    
+    .support p {
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+    
+    .support-options {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .support-option {
+      background-color: var(--color-4);
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+    
+    .support-option:hover {
+      background-color: var(--color-5);
+      transform: translateY(-5px);
+    }
+    
+    .support-option a {
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    
+    .support-option:hover a {
+      color: #fff;
+    }
+    
+    footer {
+      background-color: var(--color-1);
+      color: #fff;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .social-links a {
+      color: #fff;
+      font-size: 2rem;
+      margin: 0 1rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: var(--color-4);
+    }
   
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+    .animated-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
   
-  html {
-    scroll-behavior: smooth;
-  }
+    .animated-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+  </head>
+  <body>
+    <header>
+      <h1>Leta Warlen</h1>
+      <nav>
+        <ul>
+          <li><a href="#obras">Mis Obras</a></li>
+          <li><a href="#sobre-mi">Sobre Mí</a></li>
+          <li><a href="#apoyo">Apóyame</a></li>
+        </ul>
+      </nav>
+    </header>
   
-  body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
-    line-height: 1.6;
-  }
-  
-  header {
-    background-color: var(--color-1);
-    padding: 2rem;
-    text-align: center;
-  }
-  
-  h1 {
-    font-family: 'Righteous', cursive;
-    font-size: 4rem;
-    color: #fff;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-  }
-  
-  nav ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-  }
-  
-  nav ul li {
-    margin: 0 1rem;
-  }
-  
-  nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-  }
-  
-  nav ul li a:hover {
-    background-color: var(--color-4);
-    color: #333;
-  }
-  
-  main {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 2rem;
-  }
-  
-  h2 {
-    font-family: 'Righteous', cursive;
-    font-size: 2.5rem;
-    color: var(--color-5);
-    margin-bottom: 1.5rem;
-    text-align: center;
-  }
-  
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
-  }
-  
-  .artwork {
-    background-color: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .artwork:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-  }
-  
-  .artwork-image {
-    width: 100%;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-  }
-  
-  .artwork:hover .artwork-image {
-    transform: scale(1.1);
-  }
-  
-  .artwork-info {
-    padding: 1.5rem;
-  }
-  
-  .artwork-info h3 {
-    font-family: 'Righteous', cursive;
-    margin-bottom: 0.5rem;
-    color: var(--color-3);
-  }
-  
-  .support {
-    background-color: var(--color-2);
-    padding: 3rem 2rem;
-    text-align: center;
-    border-radius: 15px;
-    margin-top: 3rem;
-  }
-  
-  .support h2 {
-    color: #fff;
-  }
-  
-  .support p {
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-  }
-  
-  .support-options {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-  
-  .support-option {
-    background-color: var(--color-4);
-    padding: 1rem 2rem;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-  }
-  
-  .support-option:hover {
-    background-color: var(--color-5);
-    transform: translateY(-5px);
-  }
-  
-  .support-option a {
-    color: #333;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
-  }
-  
-  .support-option:hover a {
-    color: #fff;
-  }
-  
-  footer {
-    background-color: var(--color-1);
-    color: #fff;
-    text-align: center;
-    padding: 2rem;
-    margin-top: 3rem;
-  }
-  
-  .social-links a {
-    color: #fff;
-    font-size: 2rem;
-    margin: 0 1rem;
-    transition: color 0.3s ease;
-  }
-  
-  .social-links a:hover {
-    color: var(--color-4);
-  }
-
-  .animated-section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-
-  .animated-section.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .artwork-image {
-    position: relative;
-  }
-
-  .artwork-image::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-  }
-
-  #explosion-cromatica::before {
-    background-image: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1, #FFBE0B);
-  }
-
-  #neon-dreams::before {
-    background-image: linear-gradient(to right, #000, #0ff, #f0f, #000);
-  }
-
-  #eco-futurista::before {
-    background-image: radial-gradient(circle, #4ECDC4, #45B7D1, #3D9970);
-  }
-
-  #realidad-aumentada::before {
-    background-image: linear-gradient(135deg, #FF6B6B, #4ECDC4, #FFBE0B, #FB5607);
-  }
-</style>
-</head>
-<body>
-  <header>
-    <h1>Leta Warlen</h1>
-    <nav>
-      <ul>
-        <li><a href="#obras">Mis Obras</a></li>
-        <li><a href="#sobre-mi">Sobre Mí</a></li>
-        <li><a href="#apoyo">Apóyame</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section id="obras" class="animated-section">
-      <h2>Mis Obras</h2>
-      <div class="gallery">
-        <div class="artwork">
-          <div id="explosion-cromatica" class="artwork-image" aria-label="Obra de arte abstracta con explosión de colores vibrantes"></div>
-          <div class="artwork-info">
-            <h3>Explosión Cromática</h3>
-            <p>Una celebración vibrante de color y movimiento.</p>
+    <main>
+      <section id="obras" class="animated-section">
+        <h2>Mis Obras</h2>
+        <div class="gallery">
+          <div class="artwork">
+            <img src="https://picsum.photos/400/400?art,painting,colorful" alt="Obra de arte 1 - Explosión Cromática" class="artwork-cover" width="400" height="400">
+            <div class="artwork-slideshow">
+              <img src="https://picsum.photos/400/400?art,painting,colorful" alt="Explosión Cromática - Detalle 1" class="artwork-slide active" width="400" height="400">
+              <img src="https://picsum.photos/400/400?abstract,colorful" alt="Explosión Cromática - Detalle 2" class="artwork-slide" width="400" height="400">
+              <img src="https://picsum.photos/400/400?paint,splash" alt="Explosión Cromática - Detalle 3" class="artwork-slide" width="400" height="400">
+            </div>
+            <div class="artwork-info">
+              <h3>Explosión Cromática</h3>
+              <p>Una celebración vibrante de color y movimiento.</p>
+            </div>
+          </div>
+          <div class="artwork">
+            <img src="https://picsum.photos/400/400?neon,cyberpunk" alt="Obra de arte 2 - Neon Dreams" class="artwork-cover" width="400" height="400">
+            <div class="artwork-slideshow">
+              <img src="https://picsum.photos/400/400?neon,cyberpunk" alt="Neon Dreams - Detalle 1" class="artwork-slide active" width="400" height="400">
+              <img src="https://picsum.photos/400/400?neon,city" alt="Neon Dreams - Detalle 2" class="artwork-slide" width="400" height="400">
+              <img src="https://picsum.photos/400/400?digital,neon" alt="Neon Dreams - Detalle 3" class="artwork-slide" width="400" height="400">
+            </div>
+            <div class="artwork-info">
+              <h3>Neon Dreams</h3>
+              <p>Explorando la estética cyberpunk en un mundo digital.</p>
+            </div>
+          </div>
+          <div class="artwork">
+            <img src="https://picsum.photos/400/400?sculpture,futuristic" alt="Obra de arte 3 - Eco Futurista" class="artwork-cover" width="400" height="400">
+            <div class="artwork-slideshow">
+              <img src="https://picsum.photos/400/400?sculpture,futuristic" alt="Eco Futurista - Detalle 1" class="artwork-slide active" width="400" height="400">
+              <img src="https://picsum.photos/400/400?technology,nature" alt="Eco Futurista - Detalle 2" class="artwork-slide" width="400" height="400">
+              <img src="https://picsum.photos/400/400?modern,sculpture" alt="Eco Futurista - Detalle 3" class="artwork-slide" width="400" height="400">
+            </div>
+            <div class="artwork-info">
+              <h3>Eco Futurista</h3>
+              <p>Fusión de naturaleza y tecnología en forma escultórica.</p>
+            </div>
+          </div>
+          <div class="artwork">
+            <img src="https://picsum.photos/400/400?augmented,reality" alt="Obra de arte 4 - Realidad Aumentada" class="artwork-cover" width="400" height="400">
+            <div class="artwork-slideshow">
+              <img src="https://picsum.photos/400/400?augmented,reality" alt="Realidad Aumentada - Detalle 1" class="artwork-slide active" width="400" height="400">
+              <img src="https://picsum.photos/400/400?virtual,reality" alt="Realidad Aumentada - Detalle 2" class="artwork-slide" width="400" height="400">
+              <img src="https://picsum.photos/400/400?digital,interactive" alt="Realidad Aumentada - Detalle 3" class="artwork-slide" width="400" height="400">
+            </div>
+            <div class="artwork-info">
+              <h3>Realidad Aumentada</h3>
+              <p>Experiencia interactiva que desafía la percepción.</p>
+            </div>
           </div>
         </div>
-        <div class="artwork">
-          <div id="neon-dreams" class="artwork-image" aria-label="Paisaje urbano futurista con luces de neón"></div>
-          <div class="artwork-info">
-            <h3>Neon Dreams</h3>
-            <p>Explorando la estética cyberpunk en un mundo digital.</p>
+      </section>
+  
+      <section id="sobre-mi" class="animated-section">
+        <h2>Sobre Mí</h2>
+        <p>¡Hola! Soy Leta Warlen, una artista digital de 23 años obsesionada con el color, la tecnología y la cultura pop. Mi arte es una mezcla explosiva de realidad aumentada, diseño gráfico y arte callejero. Busco desafiar las percepciones tradicionales y crear experiencias visuales que hagan que la gente diga "¡WOW!".</p>
+      </section>
+  
+      <section id="apoyo" class="support animated-section">
+        <h2>¡Apóyame!</h2>
+        <p>Tu apoyo me permite seguir creando arte alucinante y romper los límites de lo visual. ¡Échame una mano y sé parte de esta revolución artística!</p>
+        <div class="support-options">
+          <div class="support-option">
+            <a href="https://patreon.com/letawarlen">
+              <i class="fas fa-heart"></i> Patreon
+            </a>
+          </div>
+          <div class="support-option">
+            <a href="https://kofi.com/letawarlen">
+              <i class="fas fa-coffee"></i> Ko-fi
+            </a>
+          </div>
+          <div class="support-option">
+            <a href="https://etsy.com/shop/letawarlen">
+              <i class="fas fa-shopping-cart"></i> Tienda Etsy
+            </a>
           </div>
         </div>
-        <div class="artwork">
-          <div id="eco-futurista" class="artwork-image" aria-label="Escultura que combina elementos naturales y tecnológicos"></div>
-          <div class="artwork-info">
-            <h3>Eco Futurista</h3>
-            <p>Fusión de naturaleza y tecnología en forma escultórica.</p>
-          </div>
-        </div>
-        <div class="artwork">
-          <div id="realidad-aumentada" class="artwork-image" aria-label="Collage digital que mezcla realidad y elementos virtuales"></div>
-          <div class="artwork-info">
-            <h3>Realidad Aumentada</h3>
-            <p>Experiencia interactiva que desafía la percepción.</p>
-          </div>
-        </div>
+      </section>
+    </main>
+  
+    <footer>
+      <p>&copy; 2023 Leta Warlen. ¡Todos los derechos reservados y todo el arte liberado!</p>
+      <div class="social-links">
+        <a href="https://instagram.com/letawarlen"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com/letawarlen"><i class="fab fa-twitter"></i></a>
+        <a href="https://tiktok.com/@letawarlen"><i class="fab fa-tiktok"></i></a>
       </div>
-    </section>
-
-    <section id="sobre-mi" class="animated-section">
-      <h2>Sobre Mí</h2>
-      <p>¡Hola! Soy Leta Warlen, una artista digital de 23 años obsesionada con el color, la tecnología y la cultura pop. Mi arte es una mezcla explosiva de realidad aumentada, diseño gráfico y arte callejero. Busco desafiar las percepciones tradicionales y crear experiencias visuales que hagan que la gente diga "¡WOW!".</p>
-    </section>
-
-    <section id="apoyo" class="support animated-section">
-      <h2>¡Apóyame!</h2>
-      <p>Tu apoyo me permite seguir creando arte alucinante y romper los límites de lo visual. ¡Échame una mano y sé parte de esta revolución artística!</p>
-      <div class="support-options">
-        <div class="support-option">
-          <a href="https://petreon.com/letawarlen">
-            <i class="fas fa-heart"></i> Patreon
-          </a>
-        </div>
-        <div class="support-option">
-          <a href="https://kofi.com/letawarlen">
-            <i class="fas fa-coffee"></i> Ko-fi
-          </a>
-        </div>
-        <div class="support-option">
-          <a href="https://etsy.com/shop/letawarlen">
-            <i class="fas fa-shopping-cart"></i> Tienda Etsy
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2023 Leta Warlen. ¡Todos los derechos reservados y todo el arte liberado!</p>
-    <div class="social-links">
-      <a href="https://instagram.com/letawarlen"><i class="fab fa-instagram"></i></a>
-      <a href="https://twitter.com/letawarlen"><i class="fab fa-twitter"></i></a>
-      <a href="https://tiktok.com/@letawarlen"><i class="fab fa-tiktok"></i></a>
-    </div>
-  </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
+    </footer>
+  
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, {
+          threshold: 0.1
         });
-      }, {
-        threshold: 0.1
-      });
-
-      document.querySelectorAll('.animated-section').forEach(section => {
-        observer.observe(section);
-      });
-
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+  
+        document.querySelectorAll('.animated-section').forEach(section => {
+          observer.observe(section);
+        });
+  
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+  
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+              behavior: 'smooth'
+            });
+          });
+        });
+  
+        // Slideshow functionality
+        const artworks = document.querySelectorAll('.artwork');
+        artworks.forEach(artwork => {
+          const slides = artwork.querySelectorAll('.artwork-slide');
+          let currentSlide = 0;
+  
+          function showNextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+          }
+  
+          let intervalId;
+  
+          artwork.addEventListener('mouseenter', () =>{
+            intervalId = setInterval(showNextSlide, 2000);
+          });
+  
+          artwork.addEventListener('mouseleave', () => {
+            clearInterval(intervalId);
+            slides.forEach((slide, index) => {
+              slide.classList.toggle('active', index === 0);
+            });
+            currentSlide = 0;
+          });
+  
+          artwork.addEventListener('click', () => {
+            showNextSlide();
           });
         });
       });
-    });
-  </script>
-</body></html>
+    </script>
+  </body></html>
